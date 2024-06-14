@@ -26,3 +26,9 @@
  # strictNullChecks 
  controlls whether null and undefined are permissible value in every type
 
+
+
+# Chapter 2 
+## Typescript's Type system
+
+Ts can generate javascript ,but the type system is the main event . this is why you're using the language 
