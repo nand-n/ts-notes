@@ -1,0 +1,10 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Nahi002 <nahomdebele002@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "tsc": "^2.0.4"
+  }
+}
