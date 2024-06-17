@@ -173,3 +173,5 @@ getStringLen(new String("Text")) // OK
 Exess Proprty checking does not work when using type assersion 
 
 In TS week type is a technical term that specificcally refer to interfaces with only optinal propery 
+
+
