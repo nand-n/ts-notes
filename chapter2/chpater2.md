@@ -227,3 +227,117 @@ interface VariableMap {
 type NamedVariable = (Input | Output ) & {name: string}
 ```
 
+
+# Using Readonly to Avoid Errors Assosiation with mutation 
+
+```javascript 
+
+function arrSum(arr:number[]){
+   let sum=0, num;
+
+   while((num==arr.pop()) != undefined){
+      sum+=num
+   }
+   return sum
+}
+```
+
+Mutation in js is a deafault for arrayu , but readonly in ts can catch surprise mutations. 
+
+
+Js primitives are are immutable , you may reassign a variable declared with let to another primitives but you can not change the primitive value itself. 
+
+```javascript 
+interface PartlyMutableName {
+   readonly fist: string;
+   last: string;
+}
+
+const jack:PartlyMutableName ={first:"nn" , last:"mm"}
+Jack.last = "lastname"; //OK 
+jack.first = "firstname"; //can not be changed because it is readonly 
+
+
+
+const FullyMutableName {
+   first: string; 
+   last: string
+}
+
+type FullyImmutableName = Readonly<FullyMutable>;
+
+```
+
+
+## Using Type operation and Generic Type to Avoid Repeating your self 
+
+```javascript 
+
+type CylinderFn = (r: number , h: number )=> number;
+const SurfaceArea : CylinderFn  = (r,h) => 2 * Math.PI * r * (r+h)l;
+const volume : CylinderFn = (r,h ) => Math.PI * r * r * h;
+
+
+for(const [r,h] of [[1,1] , [1,2] , [2,1]]){
+   console.log(
+      `Cylinder r=${r} * h= ${h}`,
+      `Surface area : ${SurfaceArea(r,h)}`,
+      `Volume: ${volume(r,h)}`
+   )
+}
+```
+
+Dont repeat types or interfaces 
+
+```javascript
+
+interface Person {
+   name: string;
+   phone: number
+}
+
+interface PersonWitBirthDate extends Person{
+   birthData: Date
+}
+
+// You also can use the intersection operator (&) for using type but it can not be extended 
+
+type PersonWithBirhtDate = Person & {birthDate : Date};
+```
+
+
+When you have a a type , state which represents the state of an entire application  and another , TopNavState , which represents just a part? 
+
+```javascript 
+interface State {
+   userId: string;
+   pageTitle:string;
+   recentFile: string[];
+   pageContents:string
+}
+
+interface TopNavState{
+   useId:string;
+   pageTitle:string;
+   recentFiles:string[]
+}
+
+//Rather than building up state by extending TopNavState , you'd like  to define  TopNav State as subset of the fields in State
+
+//Youcan remove duplication in the types of the properties indexing in to State 
+
+interface TopNavState {
+   userId: State['userId'];
+   pageTitle:State['pageTitle'];
+   recentFiles: State['recentFiles']
+}
+
+
+// Even in shorter by using mappedType 
+
+type TopNavState = {
+   [k in 'userId' | 'pageTitle' | 'recentFiles'] : State[k]
+}
+
+```
+
