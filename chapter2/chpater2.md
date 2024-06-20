@@ -178,3 +178,52 @@ In TS week type is a technical term that specificcally refer to interfaces with 
 
 ## The D/c b/n type and interface 
 
+For new code where you are need to pick a style , the general thumb is to use interface where possible , using type either where it's required (eg union types)  or has a cleaner syntax (eg function types) 
+
+--> an interface can extend a type and type can extend an interface 
+```javascript 
+
+interface IStateWithPop extends TState {
+population: number;
+}
+type TStateWithPop = IState & { population: number; };
+
+```
+
+
+
+---> A class can implement either an interface or a simple type
+
+```javascript 
+ 
+ class StateT  implements Tstate {
+   name: string ='';
+   capital: string = '';
+ }
+
+ class StateI implements IState {
+   name: string = '';
+   capital: string = ''
+ }
+
+```
+
+Finally both type and interface can be recursive 
+
+
+an interface can extend some types but not this one. Extending union types can sometimes be usefull. If you have separate types for Input and output variables and mapped from name to varibales 
+
+```javascript 
+
+type Input ={}
+type Output = {}
+interface VariableMap {
+   [name:string] : Input | Output;
+}
+
+
+//  or you might want a type attaches the name to the variable. 
+
+type NamedVariable = (Input | Output ) & {name: string}
+```
+
