@@ -350,7 +350,7 @@ Pick is example of generic type. Containging the analogy too removing code dupli
       label?:string
    }
 
-
+   //you can construct OptionsUpdate form Options using a mapped tyep and keyof
 
    type OptionsUpdate = {[K in keyof Optiosn]?:Options[K]}
 ```
