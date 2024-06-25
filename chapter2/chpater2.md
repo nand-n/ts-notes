@@ -354,3 +354,15 @@ Pick is example of generic type. Containging the analogy too removing code dupli
 
    type OptionsUpdate = {[K in keyof Optiosn]?:Options[K]}
 ```
+
+Object in js map string (or symbol) keys to values of any type. ts lets you represent flexible mappings like this by specifying an index signature on the type
+
+```javascript
+type Rocket = { [property: string]: string };
+
+const rocket: Rocket = {
+  name: "Falcon 9",
+  variant: "v1.0",
+  thrust: "4,940 KN",
+};
+```
