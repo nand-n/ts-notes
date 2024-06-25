@@ -364,5 +364,5 @@ const rocket: Rocket = {
   name: "Falcon 9",
   variant: "v1.0",
   thrust: "4,940 KN",
-};
+}; //ok
 ```
