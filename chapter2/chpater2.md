@@ -366,3 +366,55 @@ const rocket: Rocket = {
   thrust: "4,940 KN",
 }; //ok
 ```
+
+Modeling a dynamic data is by using Map type , also known as associative array
+
+```javascript
+//example of parcisng csv data using Map
+
+function parseCSVMap(input:string): Map<string, string>[]{
+  const lines = input.split('\n')
+  const [headerLine, ...rows] = lines
+  const headers = headerLine.split(',')
+  return rows.map(rowStr=>{
+    const row= new Map<string , string>()
+    rowStr.split(',').forEach((cell,i)=>{
+      row.set(headers[i],cell)
+    })
+    return row
+  })
+}
+```
+
+You can use an index type to disable excess property chacking
+
+```javascript
+declare function renderButton(props: ButtonProps):void;
+interface ButtonProps {
+  title:stirng
+  onCkick:()=>void
+}
+
+
+renderButton({
+  title:"Roll THe dice " ,
+  onClick: ()=> alter(1+ Math.floor(6* Math.random()))
+  theme:"Solarized"
+  //~~~~ Object litrals may only specify known propertues
+})
+
+//to fix this error we can use mapped type
+
+interface ButtonProps {
+  title:stirng
+  onCkick:()=>void
+  [otherProps:string]:unknowen
+}
+
+
+renderAButton({
+title: 'Roll the dice',
+onClick: () => alert(1 + Math.floor(20 * Math.random())),
+theme: 'Solarized', // ok
+});
+```
