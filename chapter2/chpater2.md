@@ -403,7 +403,7 @@ renderButton({
   //~~~~ Object litrals may only specify known propertues
 })
 
-//to fix this error we can use mapped type
+//to fix this error we can use indexed literal type
 
 interface ButtonProps {
   title:stirng
