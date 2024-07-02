@@ -367,6 +367,7 @@ const rocket: Rocket = {
 }; //ok
 ```
 
+http://172.16.32.142:5000/
 Modeling a dynamic data is by using Map type , also known as associative array
 
 ```javascript
@@ -417,4 +418,24 @@ title: 'Roll the dice',
 onClick: () => alert(1 + Math.floor(20 * Math.random())),
 theme: 'Solarized', // ok
 });
+```
+
+If you use Object.keys to list the keys of its array , you will get strings back
+
+```javascript
+  let x =['1':"first",'2':2,'3': 3 ]
+
+  Object.keys(x) //[ '0', '1', '2' ]
+```
+
+Ts allows by allowing numeric keys and distingushed b/n these strings
+
+ArrayLike
+
+```javascript
+const tupleLike: ArrayLike<string> = {
+  0: "A",
+  1: "B",
+  2: "C",
+};
 ```
