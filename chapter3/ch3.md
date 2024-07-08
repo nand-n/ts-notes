@@ -58,3 +58,7 @@ TS Doesnt understand the has and get method of a Map.
 ### nullish coalescing (??)
 
 is a logical operator that returns right hand side operand when its left side opperand is null or undefined otherwise it returns the right side opperand.
+
+## Context is used in Type inferecnes
+
+Ts dont just infer iypes based on values , it also consider the context in wichich the value occurs.
