@@ -52,3 +52,9 @@ Narowing or 'Refinement' is the process by which ts goes from a broad typ eto a 
         alert("No Element #What-time-is-it")
     }
 ```
+
+TS Doesnt understand the has and get method of a Map.
+
+### nullish coalescing (??)
+
+is a logical operator that returns right hand side operand when its left side opperand is null or undefined otherwise it returns the right side opperand.
