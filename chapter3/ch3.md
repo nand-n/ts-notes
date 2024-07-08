@@ -13,4 +13,42 @@ Ts , a variable's type is generally determined when it is first introduced.
 
 At runtime every variable has a single value. But at static analysis time , when a ts is checking the code a variable has a set of possible values namely its types.
 
-when you initialize a variables with a constant but dont provide a type , the type ckecker needs to decide on one. In other words , it needs to decide a set of possible values form the single values , the process is knownenm as widening.
+when you initialize a variables with a constant but dont provide a type , the type ckecker needs to decide on one. In other words , it needs to decide a set of possible values form the single values , the process is known as widening.
+
+There is a handy trick if you want ts to infer a tuple type instead of an array type , but still allow the type of each element in the tuple to widen to it's base type / best common type
+
+```javascript
+    function typle<T extends unknowen[]>(...elements :T) {return elements }
+
+    const arr3 = tuple (1,2,3)
+    // ^? const arr3 : [number , number, number]
+    const mix = tuple(4,"Five" , true)
+    // ^? const mix : [number , string, boolean]
+
+
+```
+
+### satisfies :
+
+Satisfies ensures that a value , well , satifies the requirments of a type and guides inferences by preventing ts from inferring a wider type
+
+```javascript
+    type Point = [number , number]
+    const capitals1 = {ny:[-73.987987, -73.987987 ], ca:[-73.987987, -73.987987 ]}
+
+    const capital2 ={ny:[-73.987987, -73.987987 ], ca:[-73.987987, -73.987987 ]} satisfies Record<string, Point>;
+
+```
+
+## Type narrowing
+
+Narowing or 'Refinement' is the process by which ts goes from a broad typ eto a more specific one, Perhaps the most common example of this is null checking
+
+```javascript
+    const elem = document.getElementById('what-time-is-it')
+    if(elem) {
+        elem.innerHTML = 'Party Time'.blink()l
+    }else{
+        alert("No Element #What-time-is-it")
+    }
+```
